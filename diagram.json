@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "author": "Future Fit Team",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -30, "left": -20, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "mpu", "top": 195.82, "left": -36.08, "attrs": {} },
+    { "type": "wokwi-led", "id": "led", "top": 170, "left": 200, "attrs": { "color": "red" } },
+    { "type": "wokwi-buzzer", "id": "buzz", "top": 170, "left": 260, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": -6.46,
+      "left": 211.43,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -106.9, "left": 124.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:3V3", "mpu:VCC", "red", [] ],
+    [ "esp:GND", "mpu:GND", "black", [] ],
+    [ "esp:GPIO21", "mpu:SDA", "green", [] ],
+    [ "esp:GPIO22", "mpu:SCL", "green", [] ],
+    [ "esp:GPIO25", "led:A", "green", [] ],
+    [ "led:C", "esp:GND", "black", [] ],
+    [ "esp:GPIO26", "buzz:1", "green", [] ],
+    [ "buzz:2", "esp:GND", "black", [] ],
+    [ "mpu:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "mpu:SDA", "esp:D21", "green", [ "v0" ] ],
+    [ "mpu:SCL", "esp:D22", "green", [ "v0" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "oled1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "oled1:SDA", "esp:D21", "green", [ "v0" ] ],
+    [ "oled1:SCL", "esp:D22", "green", [ "v0" ] ],
+    [ "led:C", "esp:D25", "green", [ "v0" ] ],
+    [ "led:A", "esp:GND.1", "green", [ "v0" ] ],
+    [ "buzz:2", "esp:D26", "green", [ "v0" ] ],
+    [ "buzz:1", "esp:GND.2", "green", [ "v0" ] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "pot1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "pot1:SIG", "esp:D34", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
